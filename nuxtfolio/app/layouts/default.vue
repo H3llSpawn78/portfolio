@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ settings }}
+    <AppHeader :settings="settings" />
     <slot />
   </div>
 </template>
@@ -10,7 +10,7 @@ const prismic = usePrismic();
 
 const { data: settings } = await useAsyncData(() =>
   prismic.client.getSingle("settings")
-);
+)
 
 useSeoMeta({
   title: settings.value?.data.site_title,
